@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>List all Users - Lazy Loading</h1>
+    <p>List rows of User and call to InfoUser's properties.
+    <br>User OneToOne UserInfo.</p>
+
+    {% for user in users %}
+        <p>
+            <b>{{ user.name }}</b> [{{ user.email }}.
+            <br>{{ user.infoUser.description }}
+        </p>
+    {% endfor %}
+{% endblock %}

@@ -18,4 +18,16 @@ class UserController extends Controller
             'users' => $users
         ));
     }
+
+    /**
+     * @Route("/users-lazy/", name="listAllUserLazy")
+     */
+    public function listAllUserLazyAction()
+    {
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('user/users-lazy.html.twig', array(
+            'users' => $users
+        ));
+    }
 }
