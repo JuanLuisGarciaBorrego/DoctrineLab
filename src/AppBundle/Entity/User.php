@@ -35,6 +35,12 @@ class User
      */
     private $email;
 
+    /**
+     * @var InfoUser $extraUSer relation one-to-one to InfoUser
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfoUser")
+     * @ORM\JoinColumn(name="id_infoUser", referencedColumnName="id")
+     */
+    private $infoUser;
 
     /**
      * Get id
@@ -92,6 +98,22 @@ class User
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @param InfoUser $infoUser
+     */
+    public function setInfoUser($infoUser)
+    {
+        $this->infoUser = $infoUser;
+    }
+
+    /**
+     * @return InfoUser
+     */
+    public function getInfoUser()
+    {
+        return $this->infoUser;
     }
 }
 
