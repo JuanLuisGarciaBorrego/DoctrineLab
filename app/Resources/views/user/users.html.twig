@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>List all Users</h1>
+    <p>List rows of User, without to call to the InfoUser's properties.
+    <br>User OneToOne UserInfo.</p>
+
+    {% for user in users %}
+        <p>
+            <b>{{ user.name }}</b> [{{ user.email }}]
+        </p>
+    {% endfor %}
+{% endblock %}
