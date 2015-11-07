@@ -35,6 +35,12 @@ class Feature
      */
     private $description;
 
+    /**
+     * @var Product
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="features")
+     * @ORM\JoinColumn(name="id_product", referencedColumnName="id")
+     */
+    private $product;
 
     /**
      * Get id
@@ -93,5 +99,20 @@ class Feature
     {
         return $this->description;
     }
-}
 
+    /**
+     * @return Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function setProduct(Product $product)
+    {
+        $this->product = $product;
+    }
+}
