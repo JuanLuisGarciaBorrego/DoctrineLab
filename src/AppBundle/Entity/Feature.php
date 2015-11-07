@@ -37,7 +37,7 @@ class Feature
 
     /**
      * @var Product
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="features")
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="features")
      * @ORM\JoinColumn(name="id_product", referencedColumnName="id")
      */
     private $product;
