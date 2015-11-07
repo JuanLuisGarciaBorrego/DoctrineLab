@@ -32,7 +32,7 @@ class Product
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Feature", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Feature", mappedBy="product", fetch="EAGER")
      */
     private $features;
 
