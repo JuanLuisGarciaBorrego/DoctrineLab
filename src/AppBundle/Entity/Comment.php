@@ -35,6 +35,13 @@ class Comment
      */
     private $content;
 
+    /**
+     * @var Article
+     *
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="comments")
+     * @ORM\JoinColumn(name="id_article", referencedColumnName="id")
+     */
+    private $article;
 
     /**
      * Get id
@@ -92,6 +99,22 @@ class Comment
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * @param Article $article
+     */
+    public function setArticle(Article $article)
+    {
+        $this->article = $article;
+    }
+
+    /**
+     * @return Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }
 
