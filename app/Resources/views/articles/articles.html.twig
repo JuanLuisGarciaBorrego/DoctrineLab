@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>List all Articles</h1>
+    <p>List rows of Articles with Lazy Loading
+    <br>Article OneToMany Comment.</p>
+
+    {% for article in articles %}
+        <p>
+            <b>{{ article.title }}</b>
+            <span style="font-size: 12px;">[{{ article.comments.count }}]Comments</span>
+            <blockquote>
+                {{ article.content }}
+            </blockquote>
+        </p>
+    {% endfor %}
+{% endblock %}
