@@ -21,15 +21,23 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article-{id}", name="listArticle")
+     * @Route("/article-{id}", name="listArticleExtraLazy")
      */
-    public function listArticleAction(Article $article)
+    public function listArticleExtraLazyAction(Article $article)
     {
         $article = $this->getDoctrine()->getRepository('AppBundle:Article')->find(array('id' => $article->getId()));
 
         $collection = $article->getComments(); // no hace nada
 
-        $totalItems = $collection->count(); //Proboca una consulta COUNT(*)
+        $totalItems = $collection->count(); //provoca una consulta COUNT(*) y no carga la colección
+        $totalItems2 = $collection->count(); //provoca una consulta COUNT(*) y no carga la colección
+
+        //el foreach provoca una consulta y SI carga la colección, a partir de la carga, doctrine no necesita realizar ninguna consulta adicional.
+        foreach($collection as $comment) {
+            $comments[] = $comment;
+         }
+
+        $totalItems3 = $collection->count(); //No genera una nueva consulta, porque cargó la colección
 
         return $this->render('articles/article.html.twig', array(
             'article' => $article,
