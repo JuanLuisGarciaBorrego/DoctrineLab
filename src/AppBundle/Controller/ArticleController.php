@@ -44,4 +44,27 @@ class ArticleController extends Controller
             'totalComment' => $totalItems
         ));
     }
+
+    /**
+     * @Route("/article/{id}", name="listArticleExtraLazyOrder")
+     */
+    public function listArticleExtraLazyOrderAction(Article $article)
+    {
+        $article = $this->getDoctrine()->getRepository('AppBundle:Article')->find(array('id' => $article->getId()));
+
+        $collection = $article->getComments(); // no hace nada
+
+        //el foreach provoca una consulta y SI carga la colección, a partir de la carga, doctrine no necesita realizar ninguna consulta adicional.
+        foreach($collection as $comment) {
+            $comments[] = $comment;
+        }
+
+        $totalItems = $collection->count(); //No genera una nueva consulta, porque cargó la colección
+        $totalItems2 = $collection->count(); //No genera una nueva consulta, porque cargó la colección
+
+        return $this->render('articles/article.html.twig', array(
+            'article' => $article,
+            'totalComment' => $totalItems
+        ));
+    }
 }
