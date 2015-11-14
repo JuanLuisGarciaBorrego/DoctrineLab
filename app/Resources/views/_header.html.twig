@@ -1,0 +1,20 @@
+<a href="{{ path('homepage') }}">
+    <h1>
+        <img src="{{ asset('img/doctrine-logo.png') }}" height="40px">Doctrine Lab
+    </h1>
+</a>
+
+<ul>
+    <li><a href="{{ path('listAllUser') }}">Users (OneToOne) InfoUser  <b>[LAZY]</b> <span>List users, without to call to InfoUser's properties</span></a></li>
+    <li><a href="{{ path('listAllUserLazy') }}">Users (OneToOne) InfoUser <b>[LAZY]</b> <span>List users and InfoUser's properties</a></li>
+</ul>
+
+<ul>
+    <li><a href="{{ path('listAllProducts') }}">Product (OneToMany) Feature <b>[EAGER]</b> <span>List products and features' properties</span></a></li>
+</ul>
+
+<ul>
+    <li><a href="{{ path('listAllArticles') }}">Article (OneToMany) Comment <b>[EXTRA_LAZY]</b> <span>List articles with count() method </span></a></li>
+    <li><a href="{{ path('listArticleExtraLazy', {'id': 4}) }}">Article (OneToMany) Comment <b>[EXTRA_LAZY]</b> <span>List article 4 with order wrong (see the controller) </span></a></li>
+    <li><a href="{{ path('listArticleExtraLazyOrder', {'id': 4}) }}">Article (OneToMany) Comment <b>[EXTRA_LAZY]</b> <span>List article 4 with order right (see the controller) </span></a></li>
+</ul>
