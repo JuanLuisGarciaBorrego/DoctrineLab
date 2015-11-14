@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Query</h1>
+
+    <h3>User0</h3>
+    <p>Name: {{ user0.name }}<br>Description: {{ user0.infoUser.description }}</p>
+
+    <h3>{{ user1[0].name }}</h3>
+    <p>Name: {{ user1[0].name }}<br>Description: {{ user1[0].infoUser.description }}</p>
+
+    <h3>{{ user2.name }}</h3>
+    <p>Name: {{ user2.name }}<br>Description: {{ user2.infoUser.description }}</p>
+
+    <h3>{{ userAssociation.name }}</h3>
+    <p>Name: {{ userAssociation.name }}<br>Description: {{ userAssociation.infoUser.description }}</p>
+{% endblock %}
