@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -44,6 +45,20 @@ class QueryController extends Controller
             'user1' => $user1,
             'user2' => $user2,
             'userAssociation' => $userAssociation
+        ));
+    }
+
+    /**
+     * @Route("/user-{name}", name="queryUsers")
+     */
+    public function queryUsersAction($name)
+    {
+        //findByProperty
+        $user = $this->getDoctrine()->getRepository('AppBundle:User')
+            ->findOneByName($name);
+
+        return $this->render('query/query-by-property.html.twig', array(
+            'user' => $user
         ));
     }
 }
