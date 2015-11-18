@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -60,5 +61,23 @@ class QueryController extends Controller
         return $this->render('query/query-by-property.html.twig', array(
             'user' => $user
         ));
+    }
+
+    /**
+     * @Route("/pagination/{page}", name="pagination", defaults={"page" = 1})
+     */
+    public function paginationAction($page)
+    {
+        $query = $this->getDoctrine()->getManager()->createQuery('SELECT c FROM AppBundle:Comment c')
+            ->setFirstResult(5 * ($page-1))
+            ->setMaxResults(5);
+
+        $paginator = new Paginator($query, $fetchJoinCollection = false);
+
+        return $this->render('query/pagination.html.twig',
+            array(
+                'comments' => $paginator
+            )
+        );
     }
 }

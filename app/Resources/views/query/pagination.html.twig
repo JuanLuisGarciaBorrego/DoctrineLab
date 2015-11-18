@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pagination comment</h1>
+
+
+    {% for comment in comments %}
+        {{ comment.id }}-{{ comment.author }}<br>
+    {% endfor %}
+
+{% endblock %}
