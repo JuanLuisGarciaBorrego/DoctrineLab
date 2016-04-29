@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Article
@@ -42,6 +43,13 @@ class Article
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="article", fetch="EXTRA_LAZY")
      */
     private $comments;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="datetime", type="datetime")
+     */
+    private $datetime;
 
     public function __construct()
     {
@@ -127,6 +135,25 @@ class Article
     {
         $this->comments->removeElement($comment);
         $comment->setArticle(null);
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDatetime()
+    {
+        return $this->datetime;
+    }
+
+    /**
+     * @param $datetime
+     * @return $this
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+
+        return $this;
     }
 }
 

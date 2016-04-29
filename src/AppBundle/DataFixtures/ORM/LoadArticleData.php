@@ -22,6 +22,7 @@ class LoadArticleData implements FixtureInterface
             $article = new Article();
             $article->setTitle('News'.$i);
             $article->setContent('This is default content');
+            $article->setDatetime(new \DateTime('- '.rand(1,4).' day'));
 
             $commentA = new Comment();
             $commentA->setAuthor('Author');
