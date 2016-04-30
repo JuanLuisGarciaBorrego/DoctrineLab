@@ -7,7 +7,7 @@
 
     {% for article in articles %}
         <p>
-            <b>{{ article.title }}</b>
+            <b>{{ article.title }}</b><i> {{ article.datetime|date('d-m-Y') }}</i>
             <span style="font-size: 12px;">[{{ article.comments.count }}]Comments</span>
             <blockquote>
                 {{ article.content }}

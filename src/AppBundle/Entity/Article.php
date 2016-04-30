@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  * Article
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
  */
 class Article
 {

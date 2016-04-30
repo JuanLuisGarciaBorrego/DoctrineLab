@@ -67,4 +67,16 @@ class ArticleController extends Controller
             'totalComment' => $totalItems
         ));
     }
+
+    /**
+     * @Route("/mysql", name="function-mysql")
+     */
+    public function mysqlAction()
+    {
+        $articles = $this->getDoctrine()->getRepository('AppBundle:Article')->findDate();
+
+        return $this->render('articles/articles_function_mysql.html.twig',[
+            'articles' => $articles
+        ]);
+    }
 }

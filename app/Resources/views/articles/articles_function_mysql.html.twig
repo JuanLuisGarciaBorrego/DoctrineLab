@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Functions MySql</h1>
+    <p>Mostrar la fecha igual a 2016-04-28 10:54:36 sin contar las horas minutos y segundos. Solo días</p>
+
+    {% for article in articles %}
+        <p>
+            <b>{{ article.title }}</b><u> {{ article.datetime|date('d-m-Y') }}</u>
+        </p>
+    {% endfor %}
+{% endblock %}
